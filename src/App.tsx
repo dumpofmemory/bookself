@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <header className="App-header">
@@ -16,11 +16,11 @@ const App: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React.
+          Learn React
         </a>
       </header>
     </div>
   );
-}
+};
 
 export default App;
