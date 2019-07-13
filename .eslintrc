@@ -73,6 +73,7 @@
     "@typescript-eslint/class-name-casing": "error",
     "no-console": [
       "warn",
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": 0
   }
 }
