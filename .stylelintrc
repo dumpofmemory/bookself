@@ -1,0 +1,56 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "color-hex-case": "lower",
+    "font-family-name-quotes": "always-where-recommended",
+    "function-url-quotes": "always",
+    "string-quotes": "single",
+    "indentation": 2,
+    "selector-attribute-quotes": "never",
+    "no-descending-specificity": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^app-/",
+          "/^ngb-/",
+          "perfect-scrollbar"
+        ]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "ng-deep"
+        ]
+      }
+    ],
+    "at-rule-no-unknown": 
+    [
+      true,
+      {
+        "ignoreAtRules": [
+          "extend",
+          "mixin",
+          "include",
+          "function",
+          "each",
+          "return"
+        ]
+      }
+    ],
+    "color-named": "never",
+    "font-weight-notation": "named-where-possible",
+    "number-leading-zero": "never",
+    "at-rule-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "selector-class-pattern": "^([A-Za-z][A-Za-z0-9]*)(((-+)|(__))[a-z0-9]+)*$",
+    "scss/at-import-no-partial-leading-underscore": true,
+  }
+}
