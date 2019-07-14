@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import base from './rebase';
 
 const App: React.FC = (): JSX.Element => {
+  const [data, setData] = useState();
+
+  function getSales(): any {
+    base
+      .fetch('books', {
+        context: setData(data),
+        asArray: true,
+      })
+      .then((data: any): any => {
+        console.log(data);
+        const result = data.map((item: any): any => item.key);
+        console.log(result);
+        setData(result);
+      })
+      .catch((error: any): any => {
+        alert(error);
+      });
+  }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  useEffect(() => {
+    if (!data) {
+      getSales();
+    }
+  }, [data, getSales]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +44,8 @@ const App: React.FC = (): JSX.Element => {
         >
           Learn React
         </a>
+        {data}
+        {/* {data.map((item: any): any => item)} */}
       </header>
     </div>
   );
