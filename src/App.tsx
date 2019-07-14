@@ -44,8 +44,7 @@ const App: React.FC = (): JSX.Element => {
         >
           Learn React
         </a>
-        {data}
-        {/* {data.map((item: any): any => item)} */}
+        {data && data.length && data[0]}
       </header>
     </div>
   );
