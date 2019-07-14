@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.scss';
+// import base from './rebase';
 
 const App: React.FC = (): JSX.Element => {
+  const [allBooks, setAllBooks] = useState();
+
+  function fetchBooks(): any {
+    base
+      .fetch('books', {
+        context: setAllBooks(allBooks),
+        asArray: true,
+      })
+      .then((responseData: any): any => {
+        console.log(responseData);
+        const result = responseData.map((item: any): any => item.key);
+        console.log(result);
+        setAllBooks(result);
+      })
+      .catch((error: any): any => {
+        alert(error);
+      });
+  }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  useEffect(() => {
+    if (!allBooks) {
+      fetchBooks();
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +44,7 @@ const App: React.FC = (): JSX.Element => {
         >
           Learn React
         </a>
+        {allBooks && allBooks.length && allBooks[0]}
       </header>
     </div>
   );
