@@ -4,19 +4,19 @@ import './App.scss';
 import base from './rebase';
 
 const App: React.FC = (): JSX.Element => {
-  const [data, setData] = useState();
+  const [allBooks, setAllBooks] = useState();
 
-  function getSales(): any {
+  function fetchBooks(): any {
     base
       .fetch('books', {
-        context: setData(data),
+        context: setAllBooks(allBooks),
         asArray: true,
       })
-      .then((data: any): any => {
-        console.log(data);
-        const result = data.map((item: any): any => item.key);
+      .then((responseData: any): any => {
+        console.log(responseData);
+        const result = responseData.map((item: any): any => item.key);
         console.log(result);
-        setData(result);
+        setAllBooks(result);
       })
       .catch((error: any): any => {
         alert(error);
@@ -24,10 +24,10 @@ const App: React.FC = (): JSX.Element => {
   }
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   useEffect(() => {
-    if (!data) {
-      getSales();
+    if (!allBooks) {
+      fetchBooks();
     }
-  }, [data, getSales]);
+  });
 
   return (
     <div className="App">
@@ -44,7 +44,7 @@ const App: React.FC = (): JSX.Element => {
         >
           Learn React
         </a>
-        {data && data.length && data[0]}
+        {allBooks && allBooks.length && allBooks[0]}
       </header>
     </div>
   );
