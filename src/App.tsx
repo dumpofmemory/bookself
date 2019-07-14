@@ -18,6 +18,7 @@ const App: React.FC = (): JSX.Element => {
         >
           Learn React
         </a>
+        {data && data.length && data[0]}
       </header>
     </div>
   );
