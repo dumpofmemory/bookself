@@ -35,14 +35,14 @@ const App: React.FC = (): JSX.Element => {
     <div className="App">
       <div className="container-fluid">
         <Header />
-        <div className="main">
+        <main>
           <Jumbotron>
             <h1 className="display-4">A place to mind your books</h1>
             {/* <p className="lead">Add your books onto the shelf</p> */}
             <Button variant="success">Add new book</Button>
           </Jumbotron>
           {allBooks && allBooks.length && allBooks[0]}
-        </div>
+        </main>
       </div>
     </div>
   );

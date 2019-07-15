@@ -1,7 +1,7 @@
 @import 'styles/variables.scss';
 
 .App {
-  .main {
+  main {
     background: #fff;
     color: $body-color;
     height: calc(100vh - #{$header-height});
