@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import base from './rebase';
+import Header from './components/header/header.component';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
 
 const App: React.FC = (): JSX.Element => {
   const [allBooks, setAllBooks] = useState();
@@ -31,21 +33,17 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {allBooks && allBooks.length && allBooks[0]}
-      </header>
+      <div className="container-fluid">
+        <Header />
+        <div className="main">
+          <Jumbotron>
+            <h1 className="display-4">A place to mind your books</h1>
+            {/* <p className="lead">Add your books onto the shelf</p> */}
+            <Button variant="success">Add new book</Button>
+          </Jumbotron>
+          {allBooks && allBooks.length && allBooks[0]}
+        </div>
+      </div>
     </div>
   );
 };
