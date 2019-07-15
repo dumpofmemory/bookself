@@ -1,15 +1,20 @@
+@import 'styles/variables.scss';
+
 .App {
-  .main {
+  main {
+    background: #fff;
+    color: $body-color;
+    height: calc(100vh - #{$header-height});
     margin: 0 60px;
     padding: 40px 40px;
-    background: #fff;
-    color: #f2f2f2;
   }
 
   .jumbotron {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+    background:
+      linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),
       url('http://mikeconkey.com/wp-content/uploads/2016/08/photo-1457369804613-52c61a468e7d-810x540.jpg');
     border-radius: 4px;
+    color: #f2f2f2;
     margin: 10px 0 20px 0;
     padding: 70px;
   }
