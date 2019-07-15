@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import base from './rebase';
 
 const App: React.FC = (): JSX.Element => {
   const [allBooks, setAllBooks] = useState();
