@@ -1,7 +1,8 @@
 // Your custom theme/variable overrides go here
 // Body
-$body-bg: #fff;
-$body-color: #ccc;
+$body-bg: #f3f6f9;
+// $body-color: #ccc;
+$body-color: #444;
 $app-min-width: 1024px;
 // Required parts of Bootstrap
 @import '~bootstrap/scss/functions';
