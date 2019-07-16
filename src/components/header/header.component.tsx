@@ -1,17 +1,17 @@
 import * as React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
+import Searchbar from '../search/searchbar.component';
 import './header.component.scss';
 
 const Header: React.SFC = (): JSX.Element => {
   return (
     <div className="Header">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">BookSelf</Navbar.Brand>
+        <Navbar.Brand href="#home" className="logo">
+          BookSelf
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -24,10 +24,10 @@ const Header: React.SFC = (): JSX.Element => {
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          {/* // TODO: Decide if Searchbar is gonna conain state or its gonna receive it as props from
+          App container */}
+          <Searchbar />
+          {/* <Searchbar searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} /> */}
         </Navbar.Collapse>
       </Navbar>
     </div>

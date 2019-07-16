@@ -12,7 +12,8 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "react-hooks"
   ],
   "env": {
     "browser": true,
@@ -28,6 +29,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
+    "jsx": true,
+    "useJSXTextNode": true,
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -69,7 +72,10 @@
     ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+<<<<<<< HEAD
 
+=======
+>>>>>>> search component draft & react-hooks plugin&rule in .eslintrc
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
