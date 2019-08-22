@@ -1,24 +1,13 @@
 {
   "extends": [
-    "plugin:react/recommended",
     "eslint:recommended",
+    "plugin:react/recommended",        
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier",
-    // "prettier/flowtype",
-    // "prettier/react",
-    // "prettier/standard",
+    "prettier/react",
     "prettier/@typescript-eslint"
-
-    // or
-    // "eslint:recommended",
-    // "plugin:@typescript-eslint/eslint-recommended",
-    // "plugin:@typescript-eslint/recommended"
-    // or
-    // "plugin:@typescript-eslint/recommended",
-    // "prettier",
-    // "prettier/@typescript-eslint"
   ],
   "plugins": [
     "react",
@@ -59,9 +48,13 @@
           true,
           "check-parameters"
         ],
-        "no-var-keyword": true
+        "no-var-keyword": true,
+        "arrowParens": "avoid",
+        "jsxSingleQuote": false,
+        "jsxBracketSameLine": true,
       }
     ],
+
     // note you must disable the base rule as it can report incorrect errors
     "camelcase": "off",
     "@typescript-eslint/camelcase": [
@@ -74,6 +67,10 @@
     "no-console": [
       "warn",
     ],
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
