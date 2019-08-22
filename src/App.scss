@@ -3,6 +3,7 @@
 .App {
   main {
     background: #fff;
+    border-radius: 4px;
     color: $body-color;
     height: calc(100vh - #{$header-height});
     margin: 0 60px;

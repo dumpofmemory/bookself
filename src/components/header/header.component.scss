@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300&display=swap');
+
 .Header {
   height: 80px;
+
+  .logo {
+    font-family: Quicksand, sans-serif;
+    font-size: 34px;
+    font-weight: 100;
+    padding-left: 40px;
+  }
 }
