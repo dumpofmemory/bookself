@@ -15,8 +15,10 @@ const App: React.FC = (): JSX.Element => {
         asArray: true,
       })
       .then((responseData: any): any => {
+        // eslint-disable-next-line no-console
         console.log(responseData);
         const result = responseData.map((item: any): any => item.key);
+        // eslint-disable-next-line no-console
         console.log(result);
         setAllBooks(result);
       })
@@ -39,7 +41,7 @@ const App: React.FC = (): JSX.Element => {
           <Jumbotron>
             <h1 className="display-4">A place to mind your books</h1>
             {/* <p className="lead">Add your books onto the shelf</p> */}
-            <Button variant="success">Add new book</Button>
+            <Button variant="success">Add new</Button>
           </Jumbotron>
           {allBooks && allBooks.length && allBooks[0]}
         </main>
