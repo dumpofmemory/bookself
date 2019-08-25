@@ -19,4 +19,12 @@
     margin: 10px 0 20px 0;
     padding: 70px;
   }
+
+  .btn-outline-light {
+    margin-top: 8px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }

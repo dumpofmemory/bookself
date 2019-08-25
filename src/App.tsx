@@ -57,7 +57,7 @@ const App: React.FC = (): JSX.Element => {
         <main>
           <Jumbotron>
             <h1 className="display-4">A place to mind your books</h1>
-            <Button variant="success">Add new</Button>
+            <Button variant="outline-light">Add new</Button>
           </Jumbotron>
           {allBooks && allBooks.length && allBooks[0]}
         </main>
