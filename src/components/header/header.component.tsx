@@ -18,7 +18,9 @@ const Header: React.SFC = (): JSX.Element => {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <Dropdown>
-              <Dropdown.Toggle id="dropdown-toggle">Menu</Dropdown.Toggle>
+              <Dropdown.Toggle id="dropdown-toggle" variant="outline-dark">
+                Menu
+              </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Hello there!</Dropdown.Item>
               </Dropdown.Menu>

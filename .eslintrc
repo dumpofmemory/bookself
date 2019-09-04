@@ -16,6 +16,8 @@
     "react-hooks"
   ],
   "env": {
+    "node": true,
+    "commonjs": true,
     "browser": true,
     "jasmine": true,
     "jest": true
@@ -72,10 +74,6 @@
     ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-<<<<<<< HEAD
-
-=======
->>>>>>> search component draft & react-hooks plugin&rule in .eslintrc
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
