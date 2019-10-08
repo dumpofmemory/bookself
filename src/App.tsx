@@ -9,6 +9,7 @@ const App: React.FC = (): JSX.Element => {
   const [allBooks, setAllBooks] = useState();
   const [name, setName] = useState('');
   const [greeting, setGreeting] = useState();
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     function fetchBooks(): any {
@@ -50,7 +51,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <div className="container-fluid">
-        <Header />
+        <Header searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
         <main>
           <Jumbotron>
             <h1 className="display-4">A place to mind your books</h1>

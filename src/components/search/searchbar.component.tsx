@@ -1,23 +1,23 @@
 import React from 'react';
 import './searchbar.component.scss';
-import { useSearch } from './searchbar.hooks';
 
-const SearchBar = (): JSX.Element => {
-  const searchHook = useSearch();
+export interface SearchProps {
+  searchQuery: string;
+  onSearchQueryChange: (searchTerm: string) => void;
+}
 
-  return (
-    <div className="Searchbar">
-      <input
-        value={searchHook.searchQuery}
-        onChange={(ev: React.FormEvent<HTMLInputElement>): void =>
-          searchHook.onSearchQueryChange(ev.currentTarget.value)
-        }
-        className="search"
-        type="search"
-        placeholder="Search..."
-      />
-    </div>
-  );
-};
+const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => (
+  <div className="Searchbar">
+    <input
+      value={searchQuery}
+      onChange={(ev: React.FormEvent<HTMLInputElement>): void =>
+        onSearchQueryChange(ev.currentTarget.value)
+      }
+      className="search"
+      type="search"
+      placeholder="Search..."
+    />
+  </div>
+);
 
 export default SearchBar;

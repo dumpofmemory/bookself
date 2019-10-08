@@ -5,7 +5,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Searchbar from '../search/searchbar.component';
 import './header.component.scss';
 
-const Header: React.SFC = (): JSX.Element => {
+export interface HeaderProps {
+  searchQuery: string;
+  onSearchQueryChange: (searchTerm: string) => void;
+}
+
+const Header = ({ searchQuery, onSearchQueryChange }: HeaderProps): JSX.Element => {
   return (
     <div className="Header">
       <Navbar bg="light" expand="lg">
@@ -26,10 +31,7 @@ const Header: React.SFC = (): JSX.Element => {
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
-          {/* // TODO: Decide if Searchbar is gonna conain state or its gonna receive it as props from
-          App container */}
-          <Searchbar />
-          {/* <Searchbar searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} /> */}
+          <Searchbar searchQuery={searchQuery} onSearchQueryChange={onSearchQueryChange} />
         </Navbar.Collapse>
       </Navbar>
     </div>
