@@ -1,16 +1,32 @@
 .suggestions-list {
   list-style: none;
+  max-height: 330px;
+  overflow-y: scroll;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
 }
 
 .Book {
   .book-details {
     display: flex;
+
     .cover-image {
       max-height: 80px;
+      margin-right: 20px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    }
+
+    .title,
+    .author,
+    .pubblish-date {
+      margin-bottom: 0;
     }
   }
 
-  
-  
-
+  hr {
+    max-width: 540px;
+    border-top-width: .07rem;
   }
+
+}

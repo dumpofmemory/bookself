@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './searchbar.component.scss';
 import Book from '../../models/book.model';
 import axios from 'axios';
@@ -27,6 +27,12 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
     onSearchQueryChange(ev.currentTarget.value);
   };
 
+  useEffect(() => {
+    if (!searchQuery) {
+      setResults([]);
+    }
+  }, [searchQuery]);
+
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
     fetchBooks(searchQuery);
@@ -35,17 +41,20 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
   return (
     <div className="Searchbar">
       <form onSubmit={onSubmitHandler}>
+        <span className="icon-search" />
         <input
           type="search"
-          placeholder="Search for books"
+          placeholder="Search by book title or author"
           value={searchQuery}
           onChange={handleInputChange}
           required
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn-dark">
+          Search
+        </button>
       </form>
       {results.length === 0 ? (
-        <div>none</div>
+        <div> </div>
       ) : (
         <div className="books-list">
           <BooksList books={results} />

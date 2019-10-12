@@ -2,6 +2,7 @@
 
 .Header {
   height: 80px;
+  margin-top: 30px;
 
   .logo {
     font-family: Quicksand, sans-serif;
@@ -11,6 +12,9 @@
   }
 
   .btn-outline-dark.dropdown-toggle {
+    border-radius: 32px;
+    width: 96px;
+
     &:focus {
       box-shadow: none;
     }
