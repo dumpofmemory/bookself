@@ -1,6 +1,16 @@
 .Searchbar {
+  position: relative;
+
   .search {
     outline: 0;
     border: none;
+  }
+
+  .books-list {
+    position: absolute;
+    max-height: 400px;
+    min-width: 600px;
+    overflow-y: scroll;
+    background: white;
   }
 }
