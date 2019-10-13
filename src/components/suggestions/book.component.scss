@@ -1,6 +1,7 @@
 .suggestions-list {
   list-style: none;
   max-height: 350px;
+  width: 600px;
   overflow-y: scroll;
   padding-left: 20px;
   padding-right: 20px;
@@ -22,10 +23,15 @@
       box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
     }
 
+    // .publish-date,
     .title,
-    .author,
-    .pubblish-date {
+    .author {
       margin-bottom: 0;
+    }
+
+    .publish-date {
+      margin-top: 2px;
+      font-size: 11px;
     }
   }
 
@@ -34,4 +40,14 @@
     border-top-width: .07rem;
   }
 
+  
+}
+
+.book-preview {
+  display: flex;
+
+  .book-detail {
+    display: flex;
+    flex-direction: column;
+  }
 }
