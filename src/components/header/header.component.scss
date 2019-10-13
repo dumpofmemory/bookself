@@ -3,7 +3,8 @@
 .Header {
   height: 80px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  padding-top: 8px;
 
   .logo {
     font-family: Quicksand, sans-serif;
@@ -23,5 +24,25 @@
 
   .navbar-toggler {
     display: block;
+  }
+
+  .dropdown-menu {
+    font-size: 1rem;
+    text-align: left;
+    list-style: none;
+    background: transparent;
+    background-clip: border-box;
+    border-width: .5px;
+    border-radius: .25rem;
+    border-color: #343a40;
+  }
+
+  #basic-navbar-nav {
+    margin-left: 120px;
+  }
+
+  .nav-link {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }

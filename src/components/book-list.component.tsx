@@ -9,7 +9,6 @@ export const SelectedBookPreview = ({ selectedBook }: any): JSX.Element => (
       <></>
     ) : (
       <>
-        <h4>Book Preview:</h4>
         <div className="book-preview">
           <img
             alt={`${selectedBook && selectedBook.volumeInfo.title} book`}
@@ -62,7 +61,6 @@ const Book = ({ book, onClick }: any): JSX.Element => {
 const BooksList = ({ books, selectedBook, onSelectBook }: any): JSX.Element => (
   <>
     <ul className="suggestions-list">
-      <SelectedBookPreview selectedBook={selectedBook} />
       {books.items.map((book: any, index: any) => {
         return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
       })}

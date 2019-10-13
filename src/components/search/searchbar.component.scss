@@ -1,19 +1,26 @@
 .Searchbar {
   position: relative;
-  margin-left: 50%;
-  margin-right: 50%;
+  // margin-left: 50%;
+  // margin-right: 50%;
   // margin-left: 120px;
+  // margin-top: 10px;
+  margin-left: 400px;
+  margin-bottom: 30px;
+  z-index: 10;
 
   input[type=search] {
     width: 600px;
-    height: 30px;
+    height: 42px;
     background: transparent;
     outline: 0;
     border: none;
-    border-bottom: .8px solid #b3b6b9;
+    border: .8px solid #b3b6b9;
+    border-radius: 32px;
     padding: 8px;
     margin: 20px;
-    text-indent: 25px;
+    text-indent: 40px;
+    // text-indent: 25px;
+    line-height: 1.5rem;
 
     &::placeholder {
       // font-size: 1.2em;
@@ -23,11 +30,13 @@
 
   .btn-dark {
     border-radius: 32px;
-    width: 106px;
-    height: 30px;
+    width: 126px;
+    // width: 106px;
+    height: 42px;
+    // height: 30px;
     // height: 35px;
-    // font-size: 14px;
-    // line-height: 1rem;
+    font-size: 14px;
+    line-height: 1.2rem;
 
     &:focus {
       box-shadow: none;
@@ -36,12 +45,16 @@
 
   .icon-search {
     position: relative;
+
     &::before {
       content: "🔍";
       position: absolute;
-      top: -3px;
-      left: 25px;
-      font-size: 16px;
+      top: -5px;
+      // top: -3px;
+      // left: 25px;
+      left: 35px;
+      font-size: 18px;
+      // font-size: 16px;
     }
   }
 
@@ -51,6 +64,8 @@
     min-width: 600px;
     position: absolute;
     left: 20px;
+    background-color: #f4f4f4;
+
     // border: .1rem solid #ccc;
     // border-top: none;
   }

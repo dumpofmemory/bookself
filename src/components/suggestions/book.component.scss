@@ -57,9 +57,18 @@
 
 .all-books {
   background-color: #fff;
+  height: 100%;
+
   h1 {
     // font-family: Roboto, sans-serif;
     font-family: Raleway, sans-serif;
     padding: 30px;
+    margin: 0 20px;
+  }
+
+  .book-preview {
+    padding: 0 30px;
+
+    margin: 0 20px;
   }
 }

@@ -64,10 +64,10 @@ const Books: React.FC = (): JSX.Element => {
         </form> */}
         <main className="">
           <section className="all-books">
-            <h1>
-              <b>You added</b>
+            <h1>You added</h1>
+            <div className="book-preview">
               <SelectedBookPreview selectedBook={booksHook.book} />
-            </h1>
+            </div>
           </section>
         </main>
       </div>
