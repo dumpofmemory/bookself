@@ -46,15 +46,6 @@
   
 }
 
-.book-preview {
-  display: flex;
-
-  .book-detail {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .all-books {
   background-color: #fff;
   height: 100%;
@@ -66,9 +57,8 @@
     margin: 0 20px;
   }
 
-  .book-preview {
-    padding: 0 30px;
-
-    margin: 0 20px;
-  }
+  // .book-preview {
+  //   padding: 0 30px;
+  //   margin: 0 20px;
+  // }
 }

@@ -65,7 +65,7 @@ const Books: React.FC = (): JSX.Element => {
         <main className="">
           <section className="all-books">
             <h1>You added</h1>
-            <div className="book-preview">
+            <div className="book-preview-section">
               <SelectedBookPreview selectedBook={booksHook.book} />
             </div>
           </section>
