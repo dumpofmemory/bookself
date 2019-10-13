@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Searchbar from '../search/searchbar.component';
 import './header.component.scss';
+// import Book from '../../models/book.model';
 
 export interface HeaderProps {
   searchQuery: string;
@@ -17,7 +18,7 @@ const Header = ({ searchQuery, onSearchQueryChange }: HeaderProps): JSX.Element 
         <Navbar.Brand href="#home" className="logo">
           BookSelf
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />/ */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#home">Home</Nav.Link>

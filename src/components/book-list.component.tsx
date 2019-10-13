@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './suggestions/book.component.scss';
 import { bookAuthors } from '../utils';
 
-const Book = ({ book }: any) => {
+const Book = ({ book, onClick }: any) => {
   return (
-    <li className="Book">
+    <li className="Book" onClick={onClick}>
       <div className="book-details">
         <img
           className="cover-image"
@@ -24,14 +24,13 @@ const Book = ({ book }: any) => {
   );
 };
 
-const BooksList = ({ books }: any) => {
-  return (
-    <ul className="suggestions-list">
-      {books.items.map((book: any, index: any) => {
-        return <Book book={book} key={index} />;
-      })}
-    </ul>
-  );
-};
+const BooksList = ({ books, selectedBook, onSelectBook }: any) => (
+  <ul className="suggestions-list">
+    <h1>Selected Book: {selectedBook && selectedBook.volumeInfo.title}</h1>
+    {books.items.map((book: any, index: any) => {
+      return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
+    })}
+  </ul>
+);
 
 export default BooksList;

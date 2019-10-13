@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import base from '../../rebase';
 import Header from '../../components/header/header.component';
-// import Jumbotron from 'react-bootstrap/Jumbotron';
-// import Button from 'react-bootstrap/Button';
 
 const Books: React.FC = (): JSX.Element => {
   const [allBooks, setAllBooks] = useState();
@@ -51,14 +49,7 @@ const Books: React.FC = (): JSX.Element => {
     <div className="App">
       <div className="container-fluid">
         <Header searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
-        <main>
-          {/* <Jumbotron>
-            <h1 className="display-4">A place to mind your books</h1>
-            <h3>{greeting && greeting.greeting}</h3>
-            <Button variant="outline-light">Add new</Button>
-          </Jumbotron> */}
-          {allBooks && allBooks.length && allBooks[0]}
-        </main>
+        <main>{allBooks && allBooks.length && allBooks[0]}</main>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Enter your name: </label>
           <input id="name" type="text" onChange={handleChange} />

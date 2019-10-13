@@ -1,15 +1,20 @@
 .suggestions-list {
   list-style: none;
-  max-height: 330px;
+  max-height: 350px;
   overflow-y: scroll;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 20px;
 }
 
 .Book {
   .book-details {
     display: flex;
+    padding: 5px 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .cover-image {
       max-height: 80px;

@@ -11,6 +11,7 @@ export interface SearchProps {
 
 const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
   const [results, setResults] = useState<Book[]>([]);
+  const [book, setBook] = useState<Book | null>(null);
 
   const API_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -18,6 +19,7 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
     try {
       const result = await axios.get(`${API_BASE_URL}?q=${searchTerm}`);
       setResults(result.data);
+      setBook(result.data.items[0]);
     } catch (error) {
       alert(error);
     }
@@ -57,7 +59,7 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
         <div> </div>
       ) : (
         <div className="books-list">
-          <BooksList books={results} />
+          <BooksList books={results} selectedBook={book} onSelectBook={setBook} />
         </div>
       )}
     </div>

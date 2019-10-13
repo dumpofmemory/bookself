@@ -3,6 +3,7 @@
 .Header {
   height: 80px;
   margin-top: 30px;
+  margin-bottom: 30px;
 
   .logo {
     font-family: Quicksand, sans-serif;
@@ -18,5 +19,9 @@
     &:focus {
       box-shadow: none;
     }
+  }
+
+  .navbar-toggler {
+    display: block;
   }
 }
