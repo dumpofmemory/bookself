@@ -2,7 +2,7 @@ import React from 'react';
 // import React, { useState, useEffect } from 'react';
 // import base from '../../rebase';
 import Header from '../../components/header/header.component';
-import { SelectedBookPreview } from '.././book-list.component';
+import SelectedBookPreview from '../selected-book-preview/selected-book-preview.component';
 import { useBooks } from './books.hooks';
 import SearchBar from '../search/searchbar.component';
 
