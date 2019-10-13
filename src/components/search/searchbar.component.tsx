@@ -4,17 +4,19 @@ import Book from '../../models/book.model';
 import axios from 'axios';
 import BooksList from '../book-list.component';
 import { useSearchBook } from './searchbar.hooks';
+// import { useBooks } from '../books/books.hooks';
 
 // export interface SearchProps {
 //   searchQuery: string;
 //   onSearchQueryChange: (searchTerm: string) => void;
 // }
 
-const SearchBar = (): JSX.Element => {
+const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
   // const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
   const [searchResults, setSearchResults] = useState<Book[]>([]);
-  const [book, setBook] = useState<Book | null>(null);
+  // const [book, setBook] = useState<Book | null>(null);
   const searchBarHook = useSearchBook();
+  // const booksHook = useBooks();
 
   const API_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -22,7 +24,8 @@ const SearchBar = (): JSX.Element => {
     try {
       const result = await axios.get(`${API_BASE_URL}?q=${searchTerm}`);
       setSearchResults(result.data);
-      setBook(result.data.items[0]);
+      onSelectBook(result.data.items[0]);
+      // booksHook.onSelectBook(result.data.items[0]);
     } catch (error) {
       alert(error);
     }
@@ -60,10 +63,16 @@ const SearchBar = (): JSX.Element => {
         </button>
       </form>
       {searchResults.length === 0 ? (
-        <div> </div>
+        <> </>
       ) : (
         <div className="books-list">
-          <BooksList books={searchResults} selectedBook={book} onSelectBook={setBook} />
+          <BooksList
+            books={searchResults}
+            selectedBook={selectedBook}
+            // selectedBook={booksHook.book}
+            // onSelectBook={booksHook.onSelectBook}
+            onSelectBook={onSelectBook}
+          />
         </div>
       )}
     </div>

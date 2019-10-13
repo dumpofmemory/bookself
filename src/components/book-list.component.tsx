@@ -61,8 +61,8 @@ const Book = ({ book, onClick }: any): JSX.Element => {
 
 const BooksList = ({ books, selectedBook, onSelectBook }: any): JSX.Element => (
   <>
-    {/* <SelectedBookPreview selectedBook={selectedBook} /> */}
     <ul className="suggestions-list">
+      <SelectedBookPreview selectedBook={selectedBook} />
       {books.items.map((book: any, index: any) => {
         return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
       })}

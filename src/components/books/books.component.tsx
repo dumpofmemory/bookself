@@ -2,8 +2,12 @@ import React from 'react';
 // import React, { useState, useEffect } from 'react';
 // import base from '../../rebase';
 import Header from '../../components/header/header.component';
+import { SelectedBookPreview } from '.././book-list.component';
+import { useBooks } from './books.hooks';
+import SearchBar from '../search/searchbar.component';
 
 const Books: React.FC = (): JSX.Element => {
+  const booksHook = useBooks();
   // TODO: backend
   // const [allBooks, setAllBooks] = useState();
   // const [name, setName] = useState('');
@@ -48,14 +52,24 @@ const Books: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
-      <div className="container-fluid">
+      <div className="">
         <Header />
+        <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
+        {/* // TODO: Backend */}
         {/* <main>{allBooks && allBooks.length && allBooks[0]}</main>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Enter your name: </label>
           <input id="name" type="text" onChange={handleChange} />
           <button type="submit">Submit</button>
         </form> */}
+        <main className="">
+          <section className="all-books">
+            <h1>
+              <b>You added</b>
+              <SelectedBookPreview selectedBook={booksHook.book} />
+            </h1>
+          </section>
+        </main>
       </div>
     </div>
   );

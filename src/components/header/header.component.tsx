@@ -2,7 +2,7 @@ import * as React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Searchbar from '../search/searchbar.component';
+// import Searchbar from '../search/searchbar.component';
 import './header.component.scss';
 
 const Header = (): JSX.Element => (
@@ -25,7 +25,7 @@ const Header = (): JSX.Element => (
             </Dropdown.Menu>
           </Dropdown>
         </Nav>
-        <Searchbar />
+        {/* <Searchbar /> */}
       </Navbar.Collapse>
     </Navbar>
   </div>

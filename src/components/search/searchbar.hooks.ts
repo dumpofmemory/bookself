@@ -8,8 +8,7 @@ export interface SearchBarHook {
 export const useSearchBook = (): SearchBarHook => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const onSearchQueryChange = (searchTerm: string): void =>
-    setSearchQuery(searchTerm);
+  const onSearchQueryChange = (searchTerm: string): void => setSearchQuery(searchTerm);
 
   return {
     searchQuery,

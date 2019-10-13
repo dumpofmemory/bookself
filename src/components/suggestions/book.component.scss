@@ -1,3 +1,6 @@
+// @import  url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+@import  url('https://fonts.googleapis.com/css?family=Raleway:700&display=swap');
+
 .suggestions-list {
   list-style: none;
   max-height: 350px;
@@ -49,5 +52,14 @@
   .book-detail {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.all-books {
+  background-color: #fff;
+  h1 {
+    // font-family: Roboto, sans-serif;
+    font-family: Raleway, sans-serif;
+    padding: 30px;
   }
 }
