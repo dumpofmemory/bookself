@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './suggestions/book.component.scss';
 import { bookAuthors } from '../utils';
 
-const SelectedBookPreview = ({ selectedBook }: any): JSX.Element => (
+export const SelectedBookPreview = ({ selectedBook }: any): JSX.Element => (
   <div>
     {!selectedBook ? (
       <></>
@@ -60,12 +60,14 @@ const Book = ({ book, onClick }: any): JSX.Element => {
 };
 
 const BooksList = ({ books, selectedBook, onSelectBook }: any): JSX.Element => (
-  <ul className="suggestions-list">
-    <SelectedBookPreview selectedBook={selectedBook} />
-    {books.items.map((book: any, index: any) => {
-      return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
-    })}
-  </ul>
+  <>
+    {/* <SelectedBookPreview selectedBook={selectedBook} /> */}
+    <ul className="suggestions-list">
+      {books.items.map((book: any, index: any) => {
+        return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
+      })}
+    </ul>
+  </>
 );
 
 export default BooksList;

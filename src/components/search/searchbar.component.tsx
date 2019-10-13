@@ -3,22 +3,25 @@ import './searchbar.component.scss';
 import Book from '../../models/book.model';
 import axios from 'axios';
 import BooksList from '../book-list.component';
+import { useSearchBook } from './searchbar.hooks';
 
-export interface SearchProps {
-  searchQuery: string;
-  onSearchQueryChange: (searchTerm: string) => void;
-}
+// export interface SearchProps {
+//   searchQuery: string;
+//   onSearchQueryChange: (searchTerm: string) => void;
+// }
 
-const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
-  const [results, setResults] = useState<Book[]>([]);
+const SearchBar = (): JSX.Element => {
+  // const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
+  const [searchResults, setSearchResults] = useState<Book[]>([]);
   const [book, setBook] = useState<Book | null>(null);
+  const searchBarHook = useSearchBook();
 
   const API_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
   const fetchBooks = async (searchTerm: string) => {
     try {
       const result = await axios.get(`${API_BASE_URL}?q=${searchTerm}`);
-      setResults(result.data);
+      setSearchResults(result.data);
       setBook(result.data.items[0]);
     } catch (error) {
       alert(error);
@@ -26,18 +29,18 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
   };
 
   const handleInputChange = (ev: React.FormEvent<HTMLInputElement>) => {
-    onSearchQueryChange(ev.currentTarget.value);
+    searchBarHook.onSearchQueryChange(ev.currentTarget.value);
   };
 
   useEffect(() => {
-    if (!searchQuery) {
-      setResults([]);
+    if (!searchBarHook.searchQuery) {
+      setSearchResults([]);
     }
-  }, [searchQuery]);
+  }, [searchBarHook.searchQuery]);
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
-    fetchBooks(searchQuery);
+    fetchBooks(searchBarHook.searchQuery);
   };
 
   return (
@@ -47,19 +50,20 @@ const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Eleme
         <input
           type="search"
           placeholder="Search by book title or author"
-          value={searchQuery}
+          value={searchBarHook.searchQuery}
           onChange={handleInputChange}
           required
         />
         <button type="submit" className="btn-dark">
+          {/* <span className="icon-search" /> */}
           Search
         </button>
       </form>
-      {results.length === 0 ? (
+      {searchResults.length === 0 ? (
         <div> </div>
       ) : (
         <div className="books-list">
-          <BooksList books={results} selectedBook={book} onSelectBook={setBook} />
+          <BooksList books={searchResults} selectedBook={book} onSelectBook={setBook} />
         </div>
       )}
     </div>
