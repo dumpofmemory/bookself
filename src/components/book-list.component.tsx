@@ -42,10 +42,8 @@ const BooksList = ({ books, selectedBook, onSelectBook, setDropdownIsOpen }: any
   }
 
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener('mousedown', handleClickOutside);
     };
   });
