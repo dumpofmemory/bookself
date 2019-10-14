@@ -54,7 +54,9 @@ const Books: React.FC = (): JSX.Element => {
     <div className="App">
       <div className="">
         <Header />
-        <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
+        <div className="searchbar">
+          <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
+        </div>
         {/* // TODO: Backend */}
         {/* <main>{allBooks && allBooks.length && allBooks[0]}</main>
         <form onSubmit={handleSubmit}>
