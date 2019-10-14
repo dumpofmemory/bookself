@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './suggestions/book.component.scss';
 import { bookAuthors } from '../utils';
@@ -26,14 +26,39 @@ const Book = ({ book, onClick }: any): JSX.Element => {
   );
 };
 
-const BooksList = ({ books, selectedBook, onSelectBook }: any): JSX.Element => (
-  <>
-    <ul className="suggestions-list">
-      {books.items.map((book: any, index: any) => {
-        return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
-      })}
-    </ul>
-  </>
-);
+const BooksList = ({ books, selectedBook, onSelectBook, setDropdownIsOpen }: any): JSX.Element => {
+  const container: any = React.createRef();
+
+  useEffect(() => {
+    if (selectedBook) {
+      setDropdownIsOpen(true);
+    }
+  }, [selectedBook, setDropdownIsOpen]);
+
+  function handleClickOutside(e: any) {
+    if (container.current && !container.current.contains(e.target)) {
+      setDropdownIsOpen(false);
+    }
+  }
+
+  useEffect(() => {
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  });
+
+  return (
+    <>
+      <ul className="suggestions-list" ref={container}>
+        {books.items.map((book: any, index: any) => {
+          return <Book book={book} key={index} onClick={(): any => onSelectBook(book)} />;
+        })}
+      </ul>
+    </>
+  );
+};
 
 export default BooksList;

@@ -4,7 +4,6 @@ import Book from '../../models/book.model';
 import axios from 'axios';
 import BooksList from '../book-list.component';
 import { useSearchBook } from './searchbar.hooks';
-// import { useBooks } from '../books/books.hooks';
 
 // export interface SearchProps {
 //   searchQuery: string;
@@ -14,9 +13,9 @@ import { useSearchBook } from './searchbar.hooks';
 const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
   // const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
   const [searchResults, setSearchResults] = useState<Book[]>([]);
-  // const [book, setBook] = useState<Book | null>(null);
+  const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>();
+
   const searchBarHook = useSearchBook();
-  // const booksHook = useBooks();
 
   const API_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -25,7 +24,6 @@ const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
       const result = await axios.get(`${API_BASE_URL}?q=${searchTerm}`);
       setSearchResults(result.data);
       onSelectBook(result.data.items[0]);
-      // booksHook.onSelectBook(result.data.items[0]);
     } catch (error) {
       alert(error);
     }
@@ -40,6 +38,16 @@ const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
       setSearchResults([]);
     }
   }, [searchBarHook.searchQuery]);
+
+  useEffect(() => {
+    if (!dropdownIsOpen) {
+      setSearchResults([]);
+      if (selectedBook && searchBarHook.searchQuery.length) {
+        searchBarHook.onSearchQueryChange('');
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dropdownIsOpen]);
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
@@ -67,10 +75,9 @@ const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
       ) : (
         <div className="books-list">
           <BooksList
+            setDropdownIsOpen={setDropdownIsOpen}
             books={searchResults}
             selectedBook={selectedBook}
-            // selectedBook={booksHook.book}
-            // onSelectBook={booksHook.onSelectBook}
             onSelectBook={onSelectBook}
           />
         </div>
