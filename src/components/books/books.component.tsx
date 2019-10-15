@@ -5,6 +5,9 @@ import Header from '../../components/header/header.component';
 import SelectedBookPreview from '../selected-book-preview/selected-book-preview.component';
 import { useBooks } from './books.hooks';
 import SearchBar from '../search/searchbar.component';
+import Login from '../login/login.component';
+import firebase from 'firebase';
+import { firebaseApp } from '../../rebase';
 
 const Books: React.FC = (): JSX.Element => {
   const booksHook = useBooks();
@@ -49,9 +52,19 @@ const Books: React.FC = (): JSX.Element => {
   // }
 
   // console.log(greeting);
+  const authHandler = async (authData: any) => console.log(authData);
+
+  const authenticate = (provider: any) => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(authHandler);
+  };
 
   return (
     <div className="App">
+      <Login authenticate={authenticate} />
       <div className="">
         <Header />
         <div className="searchbar">
