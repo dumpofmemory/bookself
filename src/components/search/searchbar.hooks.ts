@@ -1,16 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export interface SearchBarHook {
   searchQuery: string;
   onSearchQueryChange: (searchTerm: string) => void;
 }
 
-export const useSearch = (): SearchBarHook => {
-  const [searchQuery, onSearchQueryChange] = useState('');
+export const useSearchBook = (): SearchBarHook => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    onSearchQueryChange(searchQuery);
-  }, [searchQuery]);
+  const onSearchQueryChange = (searchTerm: string): void => setSearchQuery(searchTerm);
 
   return {
     searchQuery,

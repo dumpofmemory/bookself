@@ -1,6 +1,70 @@
 .Searchbar {
-  .search {
+  position: relative;
+  align-self: center;
+  margin-bottom: 30px;
+  z-index: 10;
+
+  input[type=search] {
+    width: 600px;
+    height: 42px;
+    background: transparent;
     outline: 0;
     border: none;
+    border: .8px solid #b3b6b9;
+    border-radius: 32px;
+    padding: 8px;
+    margin: 20px;
+    text-indent: 40px;
+    // text-indent: 25px;
+    line-height: 1.5rem;
+
+    &::placeholder {
+      // font-size: 1.2em;
+      // padding-left: 20px;
+    }
+  } 
+
+  .btn-dark {
+    border-radius: 32px;
+    width: 126px;
+    // width: 106px;
+    height: 42px;
+    // height: 30px;
+    // height: 35px;
+    font-size: 14px;
+    line-height: 1.2rem;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .icon-search {
+    position: relative;
+
+    &::before {
+      content: "🔍";
+      position: absolute;
+      top: -5px;
+      // top: -3px;
+      // left: 25px;
+      left: 35px;
+      font-size: 18px;
+      // font-size: 16px;
+    }
+  }
+
+  .books-list {
+    box-shadow: 0 3px 4px rgba(111, 111, 111, 0.4);
+    // box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+    max-height: 400px;
+    min-width: 600px;
+    position: absolute;
+    left: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #f6f6f6;
+    border-top: none;
+    border-radius: 16px;
+    transition: all .8s ease-in-out;
   }
 }

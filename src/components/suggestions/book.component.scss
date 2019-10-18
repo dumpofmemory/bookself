@@ -1,0 +1,64 @@
+// @import  url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+@import  url('https://fonts.googleapis.com/css?family=Raleway:700&display=swap');
+
+.suggestions-list {
+  list-style: none;
+  max-height: 350px;
+  width: 600px;
+  overflow-y: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.Book {
+  .book-details {
+    display: flex;
+    padding: 5px 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .cover-image {
+      max-height: 80px;
+      margin-right: 20px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    }
+
+    // .publish-date,
+    .title,
+    .author {
+      margin-bottom: 0;
+    }
+
+    .publish-date {
+      margin-top: 2px;
+      font-size: 11px;
+    }
+  }
+
+  hr {
+    max-width: 540px;
+    border-top-width: .07rem;
+  }
+
+  
+}
+
+.all-books {
+  background-color: #fff;
+  height: 100%;
+
+  h1 {
+    // font-family: Roboto, sans-serif;
+    font-family: Raleway, sans-serif;
+    padding: 30px;
+    margin: 0 20px;
+  }
+
+  // .book-preview {
+  //   padding: 0 30px;
+  //   margin: 0 20px;
+  // }
+}
