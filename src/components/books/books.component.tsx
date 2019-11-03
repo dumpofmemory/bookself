@@ -1,12 +1,10 @@
 import React from 'react';
-// import React, { useState, useEffect } from 'react';
-// import base from '../../rebase';
 import Header from '../../components/header/header.component';
 import SelectedBookPreview from '../selected-book-preview/selected-book-preview.component';
 import { useBooks } from './books.hooks';
 import SearchBar from '../search/searchbar.component';
 import Login from '../login/login.component';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { firebaseApp } from '../../rebase';
 
 const Books: React.FC = (): JSX.Element => {
