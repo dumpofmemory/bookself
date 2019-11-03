@@ -1,11 +1,14 @@
 const Query = {
-  user(context, info) {
-    if (!context.request.userId) {
-      return null;
-    }
-    return context.db.query.user({
-      where: { id: context.request.userId }
+  async user(parent, args, context, info) {
+    const user = await context.db.query.user({
+      where: { ...args }
     }, info);
+    return user;
+  },
+
+  async users(parent, args, context, info) {
+    const users = await context.db.query.users();
+    return users; 
   }
 };
 
