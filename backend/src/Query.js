@@ -1,5 +1,5 @@
 const Query = {
-  user(parent, args, context, info) {
+  user(context, info) {
     if (!context.request.userId) {
       return null;
     }

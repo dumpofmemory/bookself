@@ -38,20 +38,6 @@ const Books: React.FC = (): JSX.Element => {
   //   }
   // });
 
-  // function handleChange(e: any) {
-  //   const value = e.target.value;
-  //   setName(value);
-  // }
-
-  // function handleSubmit(e: any) {
-  //   e.preventDefault();
-
-  //   fetch(`/api/greeting?name=${encodeURIComponent(name)}`)
-  //     .then(response => response.json())
-  //     .then(state => setGreeting(state));
-  // }
-
-  // console.log(greeting);
   const authHandler = async (authData: any) => console.log(authData);
 
   const authenticate = (provider: any) => {
