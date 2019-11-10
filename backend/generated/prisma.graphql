@@ -256,7 +256,11 @@ type Subscription {
 
 type User {
   id: ID!
-  name: String!
+  uid: String
+  name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
   books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
 }
 
@@ -268,7 +272,11 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  name: String!
+  uid: String
+  name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
   books: BookCreateManyWithoutAuthorInput
 }
 
@@ -279,7 +287,11 @@ input UserCreateOneWithoutBooksInput {
 
 input UserCreateWithoutBooksInput {
   id: ID
-  name: String!
+  uid: String
+  name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
 }
 
 type UserEdge {
@@ -290,13 +302,25 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  uid_ASC
+  uid_DESC
   name_ASC
   name_DESC
+  email_ASC
+  email_DESC
+  photoURL_ASC
+  photoURL_DESC
+  isNewUser_ASC
+  isNewUser_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  name: String!
+  uid: String
+  name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
 }
 
 type UserSubscriptionPayload {
@@ -318,12 +342,20 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
+  uid: String
   name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
   books: BookUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateManyMutationInput {
+  uid: String
   name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
 }
 
 input UserUpdateOneWithoutBooksInput {
@@ -336,7 +368,11 @@ input UserUpdateOneWithoutBooksInput {
 }
 
 input UserUpdateWithoutBooksDataInput {
+  uid: String
   name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
 }
 
 input UserUpsertWithoutBooksInput {
@@ -359,6 +395,20 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  uid: String
+  uid_not: String
+  uid_in: [String!]
+  uid_not_in: [String!]
+  uid_lt: String
+  uid_lte: String
+  uid_gt: String
+  uid_gte: String
+  uid_contains: String
+  uid_not_contains: String
+  uid_starts_with: String
+  uid_not_starts_with: String
+  uid_ends_with: String
+  uid_not_ends_with: String
   name: String
   name_not: String
   name_in: [String!]
@@ -373,6 +423,36 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  photoURL: String
+  photoURL_not: String
+  photoURL_in: [String!]
+  photoURL_not_in: [String!]
+  photoURL_lt: String
+  photoURL_lte: String
+  photoURL_gt: String
+  photoURL_gte: String
+  photoURL_contains: String
+  photoURL_not_contains: String
+  photoURL_starts_with: String
+  photoURL_not_starts_with: String
+  photoURL_ends_with: String
+  photoURL_not_ends_with: String
+  isNewUser: Boolean
+  isNewUser_not: Boolean
   books_every: BookWhereInput
   books_some: BookWhereInput
   books_none: BookWhereInput

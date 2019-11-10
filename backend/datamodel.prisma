@@ -1,7 +1,11 @@
 type User {
   id: ID! @id
-  name: String!
-  books: [Book!]!
+  uid: String
+  name: String
+  email: String
+  photoURL: String
+  isNewUser: Boolean
+  books: [Book!]
 }
 
 type Book {

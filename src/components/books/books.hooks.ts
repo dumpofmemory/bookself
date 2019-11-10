@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Book from '../../models/book.model';
+import { Book } from '../../models/book.model';
 
 export interface BooksHook {
   book: Book | null;
