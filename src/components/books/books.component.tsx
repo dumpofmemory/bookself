@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/header.component';
 import SelectedBookPreview from '../selected-book-preview/selected-book-preview.component';
 import { useBooks } from './books.hooks';
@@ -28,6 +28,7 @@ export function Users(): JSX.Element {
 
 const Books = (): JSX.Element => {
   const booksHook = useBooks();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [createUser] = useMutation(CREATE_USER);
 
@@ -51,25 +52,44 @@ const Books = (): JSX.Element => {
       .then(authHandler);
   };
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        setIsAuthenticated(true);
+        console.log(isAuthenticated);
+        console.log(user);
+      } else {
+        // No user is signed in.
+        setIsAuthenticated(false);
+        console.log(user);
+        console.log(isAuthenticated);
+      }
+    });
+  }, [isAuthenticated]);
+
   return (
     <div className="App">
-      <Login authenticate={authenticate} />
-      <div className="">
-        <Header />
-        <div className="searchbar">
-          <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
-        </div>
+      {!isAuthenticated ? (
+        <Login authenticate={authenticate} />
+      ) : (
+        <div className="">
+          <Header />
+          <div className="searchbar">
+            <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
+          </div>
 
-        <main className="">
-          <section className="all-books">
-            <h1>You added</h1>
-            <div className="book-preview-section">
-              <SelectedBookPreview selectedBook={booksHook.book} />
-              <Users />
-            </div>
-          </section>
-        </main>
-      </div>
+          <main className="">
+            <section className="all-books">
+              <h1>You added</h1>
+              <div className="book-preview-section">
+                <SelectedBookPreview selectedBook={booksHook.book} />
+                <Users />
+              </div>
+            </section>
+          </main>
+        </div>
+      )}
     </div>
   );
 };
