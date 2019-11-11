@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './searchbar.component.scss';
-import Book from '../../models/book.model';
+import { Book } from '../../models/book.model';
 import axios from 'axios';
 import BooksList from '../book-list.component';
 import { useSearchBook } from './searchbar.hooks';

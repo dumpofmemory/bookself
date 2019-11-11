@@ -6,25 +6,12 @@ import AppLayout from './containers/app-layout.component';
 import Books from './components/books/books.component';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { gql } from 'apollo-boost';
 
 const NoMatchRoute = () => <div>404 Page</div>;
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000',
 });
-
-client
-  .query({
-    query: gql`
-      {
-        users {
-          name
-        }
-      }
-    `,
-  })
-  .then(result => console.log(result));
 
 const App = () => {
   return (
