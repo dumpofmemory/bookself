@@ -12,6 +12,9 @@ const Login = ({ authenticate }: LoginProps): JSX.Element => (
     <button className="btn btn-link" onClick={() => authenticate('Twitter')}>
       Login with twiiter
     </button>
+    <button className="btn btn-link" onClick={() => authenticate('Google')}>
+      Login with twiiter
+    </button>
   </>
 );
 
