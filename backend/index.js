@@ -2,12 +2,12 @@ const { Prisma } = require('prisma-binding');
 const { ApolloServer } = require('apollo-server');
 const { importSchema } = require('graphql-import');
 
-const typeDefs = importSchema('backend/src/schema.graphql');
+const typeDefs = importSchema('./src/schema.graphql');
 const Query = require('./src/Query');
 const Mutation = require('./src/Mutation');
 
 const db = new Prisma({
-  typeDefs: 'backend/generated/prisma.graphql',
+  typeDefs: './generated/prisma.graphql',
   endpoint: 'http://localhost:4466',
 });
 
