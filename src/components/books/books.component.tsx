@@ -7,7 +7,7 @@ import Login from '../login/login.component';
 import * as firebase from 'firebase';
 import { firebaseApp } from '../../rebase';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../../graphql/user.query';
+import { GET_USERS, GET_USER } from '../../graphql/user.query';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_USER } from '../../graphql/user.mutation';
 
@@ -26,6 +26,21 @@ export function Users(): JSX.Element {
   );
 }
 
+export function User({ uid }: any): JSX.Element {
+  const { loading, error, data } = useQuery(GET_USER, {
+    variables: { uid },
+  });
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error! ${error.message}</div>;
+
+  return (
+    <div>
+      <h3>Yo {data.user.email}</h3>
+    </div>
+  );
+}
+
 const Books = (): JSX.Element => {
   const booksHook = useBooks();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,6 +48,9 @@ const Books = (): JSX.Element => {
   const [createUser] = useMutation(CREATE_USER);
 
   const authHandler = async (authData: any) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    // const googleAuthToken = authData.credential.accessToken;
+
     await createUser({
       variables: {
         uid: authData.user.uid,
@@ -68,6 +86,20 @@ const Books = (): JSX.Element => {
     });
   }, [isAuthenticated]);
 
+  const signout = () => {
+    return firebase
+      .auth()
+      .signOut()
+      .then(function() {
+        // Sign-out successful.
+        setIsAuthenticated(false);
+      })
+      .catch(function(error) {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   return (
     <div className="App">
       {!isAuthenticated ? (
@@ -75,6 +107,9 @@ const Books = (): JSX.Element => {
       ) : (
         <div className="">
           <Header />
+          <div className="sign-out">
+            <button onClick={() => signout()}>Sign Out</button>
+          </div>
           <div className="searchbar">
             <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
           </div>
@@ -85,6 +120,7 @@ const Books = (): JSX.Element => {
               <div className="book-preview-section">
                 <SelectedBookPreview selectedBook={booksHook.book} />
                 <Users />
+                <User uid="pVgDXrQwvPNTec2PH68uiZuaYBE2" />
               </div>
             </section>
           </main>
