@@ -7,4 +7,11 @@ type Query {
 
 type Mutation {
   createUser(uid: String, name: String, email: String, photoURL: String, isNewUser: Boolean): User
+  users: [User]!
+  books: [Book]!
+}
+
+type Mutation {
+  createUser(name: String!): User!
+  createBook(data: BookCreateInput!): Book!
 }

@@ -7,7 +7,11 @@ const Query = {
 
   async users(info, args, context) {
     return await context.db.query.users();
-  }
+  },
+
+  async books(info, args, context) {
+    return await context.db.query.books();
+  },
 };
 
 module.exports = Query;

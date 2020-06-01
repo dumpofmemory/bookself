@@ -4,16 +4,27 @@ import { Book } from '../../models/book.model';
 import axios from 'axios';
 import BooksList from '../book-list.component';
 import { useSearchBook } from './searchbar.hooks';
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 // export interface SearchProps {
 //   searchQuery: string;
 //   onSearchQueryChange: (searchTerm: string) => void;
 // }
+const ADD_BOOK = gql`
+  mutation AddBook($data: BookCreateInput!){
+    createBook(data: $data) {
+      id
+      title
+    }
+  }
+`;
 
 const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
   // const SearchBar = ({ onSearchQueryChange, searchQuery }: SearchProps): JSX.Element => {
   const [searchResults, setSearchResults] = useState<Book[]>([]);
   const [dropdownIsOpen, setDropdownIsOpen] = useState<boolean>();
+  const [addBook] = useMutation(ADD_BOOK);
 
   const searchBarHook = useSearchBook();
 
@@ -23,6 +34,12 @@ const SearchBar = ({ selectedBook, onSelectBook }: any): JSX.Element => {
     try {
       const result = await axios.get(`${API_BASE_URL}?q=${searchTerm}`);
       setSearchResults(result.data);
+      await addBook({ variables: {
+        "data": {
+            "title": result.data.items[0].volumeInfo.title
+          }
+        }
+      })
       onSelectBook(result.data.items[0]);
     } catch (error) {
       alert(error);
