@@ -96,7 +96,9 @@ const Books = (): JSX.Element => {
   return (
     <div className="App">
       {!isAuthenticated ? (
-        <SignInPage authenticate={authenticate} />
+        <div className="signin-page">
+          <SignInPage authenticate={authenticate} />
+        </div>
       ) : (
         <div className="">
           <Header />
