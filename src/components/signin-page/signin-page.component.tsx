@@ -1,10 +1,10 @@
 import React from 'react';
 
-export interface LoginProps {
+export interface SignInPageProps {
   authenticate: (provider: any) => void;
 }
 
-const Login = ({ authenticate }: LoginProps): JSX.Element => (
+const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
   <>
     <button className="btn btn-link" onClick={() => authenticate('Facebook')}>
       Login with Facebook
@@ -18,4 +18,4 @@ const Login = ({ authenticate }: LoginProps): JSX.Element => (
   </>
 );
 
-export default Login;
+export default SignInPage;
