@@ -1,17 +1,12 @@
 # import * from "../generated/prisma.graphql"
 
 type Query {
-  user(id: ID!): User
-  users: [User]
-}
-
-type Mutation {
-  createUser(uid: String, name: String, email: String, photoURL: String, isNewUser: Boolean): User
+  user(uid: String): User
   users: [User]!
   books: [Book]!
 }
 
 type Mutation {
-  createUser(name: String!): User!
+  createUser(uid: String, name: String, email: String, photoURL: String, isNewUser: Boolean): User
   createBook(data: BookCreateInput!): Book!
 }

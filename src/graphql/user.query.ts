@@ -8,3 +8,13 @@ export const GET_USERS = gql`
     }
   }
 `;
+
+export const GET_USER = gql`
+  query User($uid: String!) {
+    user(uid: $uid) {
+      uid
+      name
+      email
+    }
+  }
+`;

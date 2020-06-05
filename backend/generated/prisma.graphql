@@ -256,7 +256,7 @@ type Subscription {
 
 type User {
   id: ID!
-  uid: String
+  uid: String!
   name: String
   email: String
   photoURL: String
@@ -272,7 +272,7 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  uid: String
+  uid: String!
   name: String
   email: String
   photoURL: String
@@ -287,7 +287,7 @@ input UserCreateOneWithoutBooksInput {
 
 input UserCreateWithoutBooksInput {
   id: ID
-  uid: String
+  uid: String!
   name: String
   email: String
   photoURL: String
@@ -316,7 +316,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  uid: String
+  uid: String!
   name: String
   email: String
   photoURL: String
@@ -463,4 +463,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  uid: String
 }

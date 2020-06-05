@@ -10,7 +10,9 @@ export const CREATE_USER = gql`
   ) {
     createUser(uid: $uid, name: $name, email: $email, photoURL: $photoURL, isNewUser: $isNewUser) {
       id
+      uid
       name
+      email
     }
   }
 `;
