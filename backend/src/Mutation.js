@@ -6,7 +6,9 @@ const Mutations = {
   },
 
   async createBook(info, args, context) {
-    return await context.db.mutation.createBook(args, info);
+    return await context.db.mutation.createBook({
+      data: {...args}
+    }, info);
   },
 }
 

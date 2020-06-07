@@ -10,7 +10,9 @@ type User {
 
 type Book {
   id: ID! @id
-  title: String!
-  published: Boolean! @default(value: false)
-  author: User @relation(link: INLINE)
+  authors: String
+  description: String
+  publishedDate: String
+  title: String
+  ownedBy: User! @relation(link: INLINE)
 }
