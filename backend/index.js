@@ -1,28 +1,28 @@
-const { Prisma } = require('prisma-binding');
-const { ApolloServer } = require('apollo-server');
-const { importSchema } = require('graphql-import');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const express = require('express');
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
+const app = express();
 
-const typeDefs = importSchema('./src/schema.graphql');
-const Query = require('./src/Query');
-const Mutation = require('./src/Mutation');
+const dotenv = require("dotenv");
 
-const db = new Prisma({
-  typeDefs: './generated/prisma.graphql',
-  endpoint: 'http://localhost:4466',
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
+if (dotenv.error) {
+  throw dotenv.error;
+}
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(pino);
+
+app.get("/api/greeting", (req, res) => {
+  const name = req.query.name || "World";
+  res.setHeader("Content-Type", "application/json");
+  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers: {
-    Mutation,
-    Query
-  },
-  context: ({ req }) => ({
-    ...req,
-    db
-  })
-})
-
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
-});
+app.listen(process.env.PROXY, () =>
+  console.log(`🚀 Express server is running on port: ${process.env.PROXY}`)
+);
