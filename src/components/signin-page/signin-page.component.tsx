@@ -1,8 +1,10 @@
 import React from 'react';
 import './signin-page.component.scss';
+// import CustomButton from '../custom-button/custom-button.component';
+// import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 export interface SignInPageProps {
-  authenticate: (provider: any) => void;
+  authenticate: (provider: string) => void;
 }
 
 const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
@@ -26,6 +28,7 @@ const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
         <h6>Sign in with</h6>
       </header>
       <section>
+        <div>{/* <CustomButton onClick={signInWithGoogle}>Google Sign In</CustomButton> */}</div>
         <div className="social-login">
           <button onClick={() => authenticate('Google')}>
             <img

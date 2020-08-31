@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BookDetailPage from './pages/book-details-page';
 import './App.scss';
 import AppLayout from './containers/app-layout.component';
 import Books from './components/books/books.component';
+import { auth } from './firebase/firebase.utils';
 
 const NoMatchRoute = () => <div>404 Page</div>;
 
 const App = () => {
+  const [currentUserAuth, setCurrentUserAuth] = useState();
+  console.log(currentUserAuth);
+
+  useEffect(() => {
+    let unsubscribeFromAuth: any = null;
+    unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      setCurrentUserAuth(user);
+    });
+    return () => {
+      unsubscribeFromAuth();
+    };
+  }, []);
   return (
     <Router>
       <AppLayout>
