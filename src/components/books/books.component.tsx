@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../../components/header/header.component';
+import React from 'react';
 import SelectedBookPreview from '../selected-book-preview/selected-book-preview.component';
 import { useBooks } from './books.hooks';
 import SearchBar from '../search/searchbar.component';
-import SignInPage from '../signin-page/signin-page.component';
-import firebase, { authenticate } from '../../firebase/firebase.utils';
 
 export function User({ props }: any): JSX.Element {
   return (
@@ -15,8 +12,6 @@ export function User({ props }: any): JSX.Element {
 }
 
 const Books = (): JSX.Element => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [uid, setUID] = useState<string | null>('');
   const booksHook = useBooks();
   // const [allBooks, setAllBooks] = useState<[] | null>(null);
 
@@ -42,54 +37,22 @@ const Books = (): JSX.Element => {
   //   }
   // });
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        const uid = user.uid;
-        setUID(uid);
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-    });
-  }, [isAuthenticated, setUID]);
-
-  const signOut = async () => {
-    try {
-      await firebase.auth().signOut();
-      setIsAuthenticated(false);
-    } catch (error) {
-      alert(error);
-    }
-  };
-
   return (
     <div className="App">
-      {!isAuthenticated ? (
-        <div className="signin-page">
-          <SignInPage authenticate={authenticate} />
+      <div className="">
+        <div className="searchbar">
+          <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
         </div>
-      ) : (
-        <div className="">
-          <Header />
-          <div className="sign-out">
-            <button onClick={() => signOut()}>Sign Out</button>
-          </div>
-          <div className="searchbar">
-            <SearchBar selectedBook={booksHook.book} onSelectBook={booksHook.onSelectBook} />
-          </div>
-          <main>
-            {/* {allBooks} */}
-            <section className="all-books">
-              <h1>You added</h1>
-              <div className="book-preview-section">
-                <SelectedBookPreview selectedBook={booksHook.book} />
-                <User props={!uid ? 'NONE' : uid} />
-              </div>
-            </section>
-          </main>
-        </div>
-      )}
+        <main>
+          {/* {allBooks} */}
+          <section className="all-books">
+            <h1>You added</h1>
+            <div className="book-preview-section">
+              <SelectedBookPreview selectedBook={booksHook.book} />
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 };

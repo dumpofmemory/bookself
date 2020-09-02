@@ -5,11 +5,12 @@ import './App.scss';
 import AppLayout from './containers/app-layout.component';
 import Books from './components/books/books.component';
 import { auth } from './firebase/firebase.utils';
+import { User } from 'firebase';
 
 const NoMatchRoute = () => <div>404 Page</div>;
 
 const App = () => {
-  const [currentUserAuth, setCurrentUserAuth] = useState();
+  const [currentUserAuth, setCurrentUserAuth] = useState<User | null>();
   console.log(currentUserAuth);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const App = () => {
   }, []);
   return (
     <Router>
-      <AppLayout>
+      <AppLayout currentUser={currentUserAuth}>
         <Switch>
           <Route path="/" exact component={Books} />
           <Route path="/book/:bookId" exact component={BookDetailPage} />

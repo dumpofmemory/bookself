@@ -1,10 +1,9 @@
 import React from 'react';
 import './signin-page.component.scss';
 // import CustomButton from '../custom-button/custom-button.component';
-// import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 export interface SignInPageProps {
-  authenticate: (provider: string) => void;
+  authenticate?: (provider: any) => void;
 }
 
 const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
@@ -28,9 +27,8 @@ const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
         <h6>Sign in with</h6>
       </header>
       <section>
-        <div>{/* <CustomButton onClick={signInWithGoogle}>Google Sign In</CustomButton> */}</div>
         <div className="social-login">
-          <button onClick={() => authenticate('Google')}>
+          <button onClick={() => authenticate && authenticate('Google')}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
               alt="google"
@@ -38,7 +36,7 @@ const SignInPage = ({ authenticate }: SignInPageProps): JSX.Element => (
             />
             <span>Google</span>
           </button>
-          <button onClick={() => authenticate('Twitter')}>
+          <button onClick={() => authenticate && authenticate('Twitter')}>
             <img
               src="https://cdn.freebiesupply.com/logos/large/2x/twitter-logo-svg-vector.svg"
               alt="twitter"

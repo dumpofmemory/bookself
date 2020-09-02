@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { auth } from '../../firebase/firebase.utils';
+// import SignInPage from '../signin-page/signin-page.component';
+
 // import Dropdown from 'react-bootstrap/Dropdown';
 // // import Searchbar from '../search/searchbar.component';
 // import './header.component.scss';
@@ -32,6 +35,8 @@ import Nav from 'react-bootstrap/Nav';
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import Searchbar from '../search/searchbar.component';
 import './header.component.scss';
+import CustomButton from '../custom-button/custom-button.component';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 const NavBar = (): JSX.Element => (
   <Navbar bg="light" expand="lg">
@@ -59,10 +64,19 @@ const NavBar = (): JSX.Element => (
   </Navbar>
 );
 
-const Header = (): JSX.Element => (
+const Header = ({ currentUser }: any): JSX.Element => (
   <div className="Header">
     <NavBar />
     {/* <Searchbar /> */}
+    {currentUser ? (
+      <div className="option" onClick={() => auth.signOut()}>
+        SIGN OUT
+      </div>
+    ) : (
+      <>
+        <CustomButton onClick={signInWithGoogle}>Google Sign In</CustomButton>
+      </>
+    )}
   </div>
 );
 

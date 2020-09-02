@@ -12,6 +12,7 @@ const firebaseDbConfigDetails = {
 };
 
 firebase.initializeApp(firebaseDbConfigDetails);
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -20,9 +21,9 @@ export const firestore = firebase.firestore();
 
 // export default base;
 
-// const provider = new firebase.auth.GoogleAuthProvider();
-// provider.setCustomParameters({ prompt: 'select_account' });
-// export const signInWithGoogle = () => auth.signInWithPopup(provider);
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 const authHandler = async userAuthData => {
   // This gives you a Google Access Token. You can use it to access the Google API.
@@ -37,4 +38,5 @@ export const authenticate = provider => {
     .signInWithPopup(authProvider)
     .then(authHandler);
 };
+
 export default firebase;
